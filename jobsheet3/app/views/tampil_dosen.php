@@ -26,10 +26,10 @@ $db=new database;
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Mahasiswa</a>
+          <a class="nav-link" href="tampil_mhs.php">Mahasiswa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Dosen</a>
+          <a class="nav-link" href="tampil_dosen.php">Dosen</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
@@ -42,8 +42,27 @@ $db=new database;
 
 <div class="px-5">
   <body>
-<h3>Data Dosen</h3>
-<a href="input_dosen.php"class="btn btn-primary">Tambah Dosen</a>
+    <h3>Data Dosen</h3>
+    <a class="btn btn-primary mb-2 mt-2" href="input_dosen.php"class="btn btn-primary">Tambah Dosen</a>
+    <?php
+        if(isset($_GET['status']) && $_GET['status'] == "tambah") {
+          echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          Data Anda Berhasil Ditambahkan!.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+        }elseif(isset($_GET['status']) && $_GET['status'] == "update") {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        Data Anda Berhasil Diedit!.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+        }
+        elseif(isset($_GET['status']) && $_GET['status'] == "hapus") {
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        Data Anda Berhasil Dihapus!.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+    }
+    ?>
 <table class="table table-striped">
     <tr>
         <th>No</th>
@@ -52,10 +71,6 @@ $db=new database;
         <th>Alamat</th>
         <th>Aksi</th>
     </tr>
-    
-            <div class="alert alert-success" role="alert">
-                 Data berhasil disimpan!
-            </div>
     <?php
     $no = 1;
     foreach($db->tampil_dosen() as $x) {
@@ -70,12 +85,12 @@ $db=new database;
                 <a href="proses_dosen.php?id=<?php echo $x['id']; ?>&aksi=hapus"class="btn btn-danger">Hapus</a>
             </td>
         </tr>
-    <?php
-    }
-    ?>
-</table>
-</div>
+      <?php
+      }
+      ?>
+    </table>
+  </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>

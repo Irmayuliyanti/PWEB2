@@ -22,10 +22,10 @@ echo "</br>Perulangan DO..WHILE bilangan prima kurang dari 20 </br>";
 $Angka= 2;
     do {
         $isPrima = true;
-        for ($z = 2; $z <= sqrt($Angka); $z++) {
-            if ($Angka % $z == 0) {
+        for ($i = 2; $i < $Angka; $i++) {
+            if ($Angka % $i == 0) {
                 $isPrima = false;
-                break;
+                break; 
             }
         }
         if ($isPrima) {

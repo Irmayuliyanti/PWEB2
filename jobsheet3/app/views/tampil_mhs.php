@@ -26,10 +26,10 @@ $db=new database;
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Mahasiswa</a>
+          <a class="nav-link" href="tampil_mhs.php">Mahasiswa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Dosen</a>
+          <a class="nav-link" href="tampil_dosen.php">Dosen</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
@@ -45,6 +45,26 @@ $db=new database;
     
     <h3>Data Mahasiswa</h3>
     <a class="btn btn-primary mb-2 mt-2"href="input_mhs.php">Tambah Mahasiswa</a>
+
+    <?php
+        if(isset($_GET['status']) && $_GET['status'] == "tambah") {
+          echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          Data Anda Berhasil Ditambahkan!.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+        }elseif(isset($_GET['status']) && $_GET['status'] == "update") {
+          echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+          Data Anda Berhasil Diedit!.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+        }
+        elseif(isset($_GET['status']) && $_GET['status'] == "hapus") {
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        Data Anda Berhasil Dihapus!.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+      }
+    ?>
     <table class="table table-striped">
         <tr>
             <th>No</th>
@@ -53,9 +73,7 @@ $db=new database;
             <th>Alamat</th>
             <th>Aksi</th>
         </tr>
-            <div class="alert alert-success" role="alert">
-                 Data berhasil disimpan!
-            </div>
+            
         <?php
         $no = 1;
          foreach($db->tampil_mahasiswa() as $x) {
