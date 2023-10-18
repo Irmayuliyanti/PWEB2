@@ -1,8 +1,10 @@
 <?php
+//Class manusia
 class manusia
 {
+    //Property
     public $nama_saya;
-
+    //Method manusia
     function panggil_nama($saya)
     {
         $this->nama_saya=$saya;
@@ -29,16 +31,18 @@ echo "Nama Belakang Saya : " , $informatika->nama_mahasiswa;
 
 ?>
 
-<p><br>Latihan Privat dan Protected</p>
+<br><br><p>Latihan Private dan Protected</p>
 <br>
 
 <?php
 class manusiaa
 {
+    //Menentukan property
     public $nama_depan;
     private $nama_belakang;
     protected $nama_panggilan;
 
+    //Method manusiaa
     public function panggil_depan($depan)
     {
         $this->nama_depan = $depan;
@@ -65,24 +69,27 @@ class manusiaa
     }
 }
 
+//Class turunan dari class manusiaa
 class mahasiswaa extends manusiaa
 {
-    public $nim;
+    public $prodi;
 
-    public function panggil_nim($nim)
+    public function panggil_prodi($prodi)
     {
-        $this->nim = $nim;
+        $this->prodi = $prodi;
     }
 }
 
+//Instansiasi class mahasiswaa
 $irma = new mahasiswaa();
 $irma->panggil_depan("Irma");
 $irma->setpanggil_belakang("Yuliyanti");
 $irma->setnama_panggilan("Irma");
-$irma->panggil_nim("220202086");
+$irma->panggil_prodi("D3 - Teknik Informatika");
 
+//Menampilkan isi Private dan Protected
 echo "Nama Depan : " . $irma->nama_depan;
 echo "<br>Nama Belakang : " . $irma->getpanggil_belakang();
 echo "<br>Nama Panggilan : " . $irma->getnama_panggilan();
-echo "<br>NIM : " . $irma->nim;
+echo "<br>Prodi : " . $irma->prodi;
 ?>
